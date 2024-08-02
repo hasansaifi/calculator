@@ -69,7 +69,11 @@ body {
     border-style: none;
     padding-left: 20px;
     text-align: left;
-}  
+}
+
+.zero:active {
+    background-color: #5e5d5d;
+}
 
 .mainContainer {
     display: flex;
