@@ -4,6 +4,7 @@ const buttonList = document.querySelectorAll("button");
 
 let numOne;
 let numTwo;
+let total;
 
 let isNumeOne;
 
@@ -58,24 +59,32 @@ buttonList.forEach((item) => {
             output.textContent = output.innerText + 0});
     }else if(item.className.includes("+")){
         item.addEventListener("click", function(){
-            removeZero()
-            add()});
+            add();
+        });
     }else if(item.className.includes("-")){
         item.addEventListener("click", function(){
-            removeZero()
-            output.textContent = output.innerText + "-"});
+            subtract();
+        });
     }else if(item.className.includes("x")){
         item.addEventListener("click", function(){
-            removeZero()
-            output.textContent = output.innerText + "x"});
+            multiply()
+        });
     }else if(item.className.includes("/")){
         item.addEventListener("click", function(){
-            removeZero()
-            output.textContent = output.innerText + "/"});
-    }else if(item.className.includes("1")){
+            divide()
+        });
+    }else if(item.className.includes("equal")){
         item.addEventListener("click", function(){
-            removeZero()
-            output.textContent = output.innerText + 1});
+            if(output2.innerText.includes("+")){
+                add();
+            }else if(output2.innerText.includes("-")){
+                subtract();
+            }else if(output2.innerText.includes("x")){
+                multiply();
+            }else if(output2.innerText.includes("÷")){
+                divide();
+            }
+        });
     }else if(item.className.includes("1")){
         item.addEventListener("click", function(){
             removeZero()
@@ -91,9 +100,6 @@ buttonList.forEach((item) => {
     }
 });
 
-
-
-
 function removeZero(){
     if(output.innerText ==0){
         output.textContent = "";}
@@ -103,29 +109,74 @@ function removeZero(){
     }
 }
 
+function equal(){
+
+}
+
 function add(){
-    if(numOne >0){
+    if(numOne > 0){
         numTwo = parseInt(output.innerText);
-        output.textContent = numOne + numTwo;
-        console.log("hi");
+        console.log(parseInt(output.innerText));
+        total = numOne + numTwo;
+        output2.textContent = numTwo + " + " + numOne + " = ";
+        output.textContent = total;
+        isNumeOne = true;
+        console.log("if");
+    }else if(!numOne){
+        numOne = parseInt(output.innerText)
+        isNumeOne = true;
+        output2.textContent = output.innerText + " + ";
+        console.log("else");
     }
-    numOne = parseInt(output.innerText)
-    isNumeOne = true;
-    output2.textContent = output.innerText + " +";
-
 }
 
-function subtract(numOne, numTwo){
-    sum = numOne + numTwo;
-    return sum;
+function subtract(){
+    if(numOne > 0){
+        numTwo = parseInt(output.innerText);
+        console.log(parseInt(output.innerText));
+        total = numOne - numTwo;
+        output2.textContent = numOne + " - " + numTwo + " = ";
+        output.textContent = total;
+        isNumeOne = true;
+        console.log("if");
+    }else if(!numOne){
+        numOne = parseInt(output.innerText)
+        isNumeOne = true;
+        output2.textContent = output.innerText + " - ";
+        console.log("else");
+    }
 }
 
-function multiply(numOne, numTwo){
-    sum = numOne + numTwo;
-    return sum;
+function multiply(){
+    if(numOne > 0){
+        numTwo = parseInt(output.innerText);
+        console.log(parseInt(output.innerText));
+        total = numOne * numTwo;
+        output2.textContent = numOne + " x " + numTwo + " = ";
+        output.textContent = total;
+        isNumeOne = true;
+        console.log("if");
+    }else if(!numOne){
+        numOne = parseInt(output.innerText)
+        isNumeOne = true;
+        output2.textContent = output.innerText + " x ";
+        console.log("else");
+    }
 }
 
-function divide(numOne, numTwo){
-    sum = numOne + numTwo;
-    return sum;
+function divide(){
+    if(numOne > 0){
+        numTwo = parseInt(output.innerText);
+        console.log(parseInt(output.innerText));
+        total = numOne / numTwo;
+        output2.textContent = numOne + " ÷ " + numTwo + " = ";
+        output.textContent = total;
+        isNumeOne = true;
+        console.log("if");
+    }else if(!numOne){
+        numOne = parseInt(output.innerText)
+        isNumeOne = true;
+        output2.textContent = output.innerText + " ÷ ";
+        console.log("else");
+    }
 }
